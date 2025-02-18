@@ -4,10 +4,26 @@ from full_chain import retri_gen_QA, retri_gen_QA_final
 from vector_store import create_vector_db
 from local_loader import get_document_text
 from splitter import split_documents
+import base64
+
+def get_image_base64(path):
+    with open(path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
 
 
-st.set_page_config(page_title="BBC Merthyr Project (Correspondence)")
-st.title("🦜🔗 BBC Merthyr Project")
+st.set_page_config(page_title="AI Archive Explorer")
+# st.title("AI Archive Explorer")
+logo = get_image_base64("pic/cannon.png")
+st.markdown(
+     f"""
+    <h1 style='display: inline;'>
+        <img src="data:image/png;base64,{logo}" 
+             style='vertical-align: middle; width: 30px; margin-left: 10px;'>
+        AI Archive Explorer
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
