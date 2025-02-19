@@ -16,14 +16,59 @@ st.set_page_config(page_title="AI Archive Explorer")
 logo = get_image_base64("pic/cannon.png")
 st.markdown(
      f"""
-    <h1 style='display: inline;'>
+    <h1 style='display: inline; funt-size: 60px; color: orange'>
         <img src="data:image/png;base64,{logo}" 
-             style='vertical-align: middle; width: 30px; margin-left: 10px;'>
+             style='vertical-align: middle; width: 60px; margin-left: 10px;'>
         AI Archive Explorer
     </h1>
     """,
     unsafe_allow_html=True
 )
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #2F4F4F; 
+    }
+    .stWrite {
+        color: #FFFDD0; 
+    }
+    .stSelectbox label {
+        color: #FFFDD0; 
+    }
+    .stSelectbox select {
+        color: #FFFDD0; 
+    }
+    .stButton button {
+        color: #FFFDD0; 
+    }
+    .stForm {
+        color: #FFFDD0;
+    }
+    .stForm label {
+        color: #FFFDD0; 
+    }
+
+    
+    .stSidebar {
+        background-color: #2F4F4F; 
+        color: #FFFDD0; 
+    }
+    .stSidebar .stMarkdown {
+        color: #FFFDD0; 
+    }
+    .stSidebar label {
+        color: #FFFDD0; 
+    }
+    .st-emotion-cache-h4xjwg {
+        background-color: #2F4F4F !important; 
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
