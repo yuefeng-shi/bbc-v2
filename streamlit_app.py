@@ -123,20 +123,65 @@ with st.form("my_form"):
         res,_ = retri_gen_QA_final(vectordb_dir=emb_select , keys= openai_api_key, query = text, llm_type=type)
 
         st.write('Generated Answers:')
-        st.info(res['answer'])
+        st.markdown(
+                           f"""
+                           <div style="
+                           border: 1px solid #ccc;
+                           padding: 10px;
+                           border-radius: 5px;
+                           background-color: #2F4F4F;
+                           ">
+                           <p>{res['answer']}</p>
+                           </div>
+                            """,
+            unsafe_allow_html=True
+            )
+        # st.write(res['answer'])
         st.write('References:')
         for i, item in enumerate(res['context']):
             # st.info('Text ID and Date for Reference ' + str(i) + ': \n' + item.metadata['source'][11:-4] + ';' + item.metadata['date'])
-            st.info('Text ID Date and Original file for Reference ' + str(i + 1) + ':')
+            st.write('Text ID Date and Original file for Reference ' + str(i + 1) + ':')
             if data_type == 'Correspondence':
-                st.write(item.metadata['source'][14:-4])
-                st.write(item.metadata['date']) 
-                st.write(item.metadata['full_text'])
+                # with st.container():
+                #     st.write(item.metadata['source'][14:-4])
+                #     st.write(item.metadata['date']) 
+                #     st.write(item.metadata['full_text'])
+                st.markdown(
+                           f"""
+                           <div style="
+                           border: 1px solid #ccc;
+                           padding: 10px;
+                           border-radius: 5px;
+                           background-color: #2F4F4F;
+                           ">
+                           <p>{item.metadata['source'][14:-4]}</p>
+                           <p>{item.metadata['date']}</p>
+                           <p>{item.metadata['full_text']}</p>
+                           </div>
+                            """,
+            unsafe_allow_html=True
+            )
             # st.info( item.metadata['source'][11:-4] )
             # st.info(item.metadata['date'])
             # st.info(item.metadata['full_text'])
             else:
-                st.write(item.metadata['source'][21:-4])
-                st.write(item.metadata['date']) 
-                st.write(item.metadata['full_text']
-                    )
+                # with st.container():
+                #     st.write(item.metadata['source'][21:-4])
+                #     st.write(item.metadata['date']) 
+                #     st.write(item.metadata['full_text']
+                #     )
+                st.markdown(
+                           f"""
+                           <div style="
+                           border: 1px solid #ccc;
+                           padding: 10px;
+                           border-radius: 5px;
+                           background-color: #2F4F4F;
+                           ">
+                           <p>{item.metadata['source'][21:-4]}</p>
+                           <p>{item.metadata['date']}</p>
+                           <p>{item.metadata['full_text']}</p>
+                           </div>
+                            """,
+            unsafe_allow_html=True
+            )
